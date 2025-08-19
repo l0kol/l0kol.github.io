@@ -1,0 +1,90 @@
+// Dark mode for Pixyll - fixing title outlines
+[data-theme="dark"] {
+  // Base colors
+  body {
+    background-color: #1a1a1a !important;
+    color: #e1e1e1 !important;
+  }
+
+  // Fix titles - remove any text-stroke or shadow
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  .site-header h1,
+  .post-title,
+  .title {
+    color: #ffffff !important;
+    text-shadow: none !important;
+    -webkit-text-stroke: 0 !important;
+    -webkit-text-stroke-width: 0 !important;
+    -webkit-text-stroke-color: transparent !important;
+    text-stroke: 0 !important;
+  }
+
+  // Links
+  a {
+    color: #66b3ff !important;
+    text-shadow: none !important;
+    -webkit-text-stroke: 0 !important;
+  }
+
+  a:hover {
+    color: #99ccff !important;
+  }
+
+  // General content
+  .post, .measure, .site-wrap {
+    background-color: #1a1a1a !important;
+    color: #e1e1e1 !important;
+  }
+
+  // Code blocks
+  pre, code {
+    background-color: #2d2d2d !important;
+    color: #e1e1e1 !important;
+    border: 1px solid #444 !important;
+  }
+
+  // Site container
+  .site {
+    background-color: #1a1a1a !important;
+    color: #e1e1e1 !important;
+  }
+
+  // Header area
+  .site-header {
+    background-color: #2d2d2d !important;
+  }
+
+  // Navigation links
+  .site-nav a {
+    color: #e1e1e1 !important;
+    text-shadow: none !important;
+    -webkit-text-stroke: 0 !important;
+  }
+}
+
+// Dark mode toggle button
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  background: #555;
+}
+
+[data-theme="dark"] .dark-mode-toggle {
+  background: #ffd700;
+  color: #333;
+}

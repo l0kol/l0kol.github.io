@@ -10,11 +10,11 @@ tags: kalman-filter shape-tracking
 
 👷 - Work in progress, the blog is not completed. I'm writing this in my free time.
 
-This is an overview of a project I did a while ago, where the goal was to succesfully track shapes in a video using only classical computer vision methods. 
-The task was to track the shapes from the moment they entered into the picture frame, to the moment they dissapeared from the frame. Sounds trivial, but there were a couple of tricky parts. 
-The shapes dissaperad randomly for a (couple of) frame(s), the shapes also moved over eachother, sometimes completely abstracting one another. 
-All of this would be trivial using ML methods, but with traditional CV, we have to use a bunch of algorithms to acheave this. It's also not that complicated, we just have more code
-to stick together to acheave the same. But the bonus point is the speedm this algo works in real time (much faster than the frame rate of teh video). I will now walk you over the procces. 
+This is an overview of a project I did a while ago, where the goal was to successfully track shapes in a video using only classical computer vision methods. 
+The task was to track the shapes from the moment they entered into the picture frame, to the moment they disappeared from the frame. Sounds trivial, but there were a couple of tricky parts. 
+The shapes dispread randomly for a (couple of) frame(s), the shapes also moved over each other, sometimes completely abstracting one another. 
+All of this would be trivial using ML methods, but with traditional CV, we have to use a bunch of algorithms to achieve this. It's also not that complicated, we just have more code
+to stick together to achieve the same. But the bonus point is the speed this algo works in real time (much faster than the frame rate of the video). I will now walk you over the process. 
 
 But first, bellow is the video of the finished result.
 
@@ -133,7 +133,7 @@ Before doing the contour searching, we have to prepare the frame. First we run i
   </div>
 </div>
 
-Blurred frame is then inputed into the threshodling function. But as you can see in the image bellow, the result is not perfect to say the least. 
+Blurred frame is then inputed into the threshodling function, followed by some morphological closing. But as you can see in the image bellow, the result is not perfect to say the least. 
 
 <div style="display: flex; justify-content: space-between; text-align: center;">
   <div style="margin: 0 10px;">
@@ -141,6 +141,20 @@ Blurred frame is then inputed into the threshodling function. But as you can see
     <p style="margin-top: 8px;"><em> Binary image</em></p>
   </div>
 </div>
+
+I found this stackoverflow post, where somebody was facing a similair problem. ( [Link](https://stackoverflow.com/questions/66924925/how-can-i-remove-double-lines-detected-along-the-edges) ).
+The solution is to use floodFill functions, two times one after another. So first we fill the backgroud with white color and then with black color. 
+
+
+<div style="display: flex; justify-content: space-between; text-align: center;">
+  <div style="margin: 0 10px;">
+    <img src="/images/floodFill.png" width="600" /> 
+    <p style="margin-top: 8px;"><em> Binary image</em></p>
+  </div>
+  </div>
+
+After that, the findContours works flawlesly
+
 
 ## <a id="shape-tracking"></a>Shape Tracking
 ### Kalman Filter
